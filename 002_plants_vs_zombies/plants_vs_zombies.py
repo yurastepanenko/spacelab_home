@@ -26,6 +26,12 @@ plants = [2, 4, 0, 8 ]
 
 
 def validate_input(func):
+    """
+       Decorator that validates the input arguments of the decorated function.
+
+       :param func: The function to be decorated.
+       :return: The decorated function.
+       """
     def wrapper(plants, zombies):
         if not all(isinstance(x, (int, float)) for x in plants + zombies):
             raise ValueError("Both plants and zombies must contain only numbers")
@@ -35,6 +41,13 @@ def validate_input(func):
 
 @validate_input
 def plant_war(plants, zombies):
+    """
+      Compares the arrays of plants and zombies and returns the result of the battle.
+
+      :param plants: Array of numbers representing the strength of plants.
+      :param zombies: Array of numbers representing the strength of zombies.
+      :return: The result of the battle. True if plants win, False otherwise.
+      """
     min_len = min(len(plants), len(zombies))
     score_plants = 0
     score_zombies = 0

@@ -16,6 +16,12 @@ test_array_4 = [100, 3, '65']
 
 
 def validate_array(func):
+    """
+       Decorator that validates the input arguments of the decorated function.
+
+       :param func: The function to be decorated.
+       :return: The decorated function.
+       """
     def wrapper(arr):
         if len(arr) != 3 or not all(isinstance(x, (int, float)) for x in arr):
             raise ValueError("The array must contain exactly 3 numbers")
